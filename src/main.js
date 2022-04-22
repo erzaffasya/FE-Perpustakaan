@@ -5,7 +5,23 @@ import 'prismjs/themes/prism-coy.css';
 import './assets/styles/layout.scss';
 import './assets/demo/flags/flags.css';
 
+// bootstrap 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min'
+
+// fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+library.add(faHatWizard)
+import { faHatWizard } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+// axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+
 import { createApp, reactive } from 'vue';
+
 import router from './router';
 import AppWrapper from './AppWrapper.vue';
 import PrimeVue from 'primevue/config';
@@ -97,6 +113,8 @@ import TriStateCheckbox from 'primevue/tristatecheckbox';
 import CodeHighlight from './AppCodeHighlight';
 import BlockViewer from './BlockViewer';
 
+
+
 router.beforeEach(function(to, from, next) {
     window.scrollTo(0, 0);
     next();
@@ -110,6 +128,7 @@ app.use(PrimeVue, { ripple: true, inputStyle: 'outlined' });
 app.use(ConfirmationService);
 app.use(ToastService);
 app.use(router);
+app.use(VueAxios, axios) //Axios
 
 app.directive('tooltip', Tooltip);
 app.directive('ripple', Ripple);
@@ -117,6 +136,7 @@ app.directive('code', CodeHighlight);
 app.directive('badge', BadgeDirective);
 app.directive('styleclass', StyleClass);
 
+app.component('font-awesome-icon', FontAwesomeIcon) //Fontawesome
 app.component('Accordion', Accordion);
 app.component('AccordionTab', AccordionTab);
 app.component('AutoComplete', AutoComplete);
