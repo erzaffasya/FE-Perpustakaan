@@ -19,6 +19,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+// Sweetalert
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 import { createApp, reactive } from 'vue';
 
@@ -129,6 +132,7 @@ app.use(ConfirmationService);
 app.use(ToastService);
 app.use(router);
 app.use(VueAxios, axios) //Axios
+app.use(VueSweetalert2); //Sweetalert
 
 app.directive('tooltip', Tooltip);
 app.directive('ripple', Ripple);
