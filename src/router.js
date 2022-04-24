@@ -124,8 +124,48 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHashHistory('/iAmIgnored'),
+    history: createWebHashHistory(),
     routes,
 });
 
 export default router;
+
+// router.beforeEach((to, from, next) => {
+//     const { authorize } = to.meta;
+//     if(localStorage.getItem('auth')){
+//         User.profile().then(response =>{
+//             let Userdata = response.data;
+//             if (authorize == 'Vendor') {
+                
+//                 if(response.status === 401){
+//                     return next({ path: '/login', query: { returnUrl: to.path } });
+//                 }
+//                 if(Userdata.is_vendor == true){
+//                     next();
+//                 }else{
+//                     return next({ path: '/login', query: { returnUrl: to.path } });
+//                 }
+//             }else if(authorize == 'MustLogin'){
+//                 if(!localStorage.getItem('auth')){
+//                     return next({ path: '/login', query: { returnUrl: to.path } });
+//                 }else{
+//                     next();
+//                 }
+//             }else{
+//                 next();
+//             }
+//         });
+//     }else{
+//         if(authorize == 'MustLogin'){
+//             return next({ path: '/login', query: { returnUrl: to.path } });
+//         }else{
+//             if (authorize == 'Vendor') {
+//                 if(!localStorage.getItem('auth')){
+//                     return next({ path: '/login', query: { returnUrl: to.path } });
+//                 }
+//             }
+//             next();
+//         }
+        
+//     }
+// })
